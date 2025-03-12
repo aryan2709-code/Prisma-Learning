@@ -5,9 +5,12 @@ async function readUser() {
    const user = await client.user.findFirst({
     where : {
         id : 2
+    },
+    select:{
+      username : true
     }
 })
-console.log(user?.password)
+console.log(user?.username)
 }
 
 readUser();
