@@ -1,17 +1,13 @@
 import { PrismaClient } from "@prisma/client";
 const client = new PrismaClient(); // generate an instance of Prisma Client Class
 
-async function updateUser() {
-   await client.user.update({
+async function readUser() {
+   const user = await client.user.findFirst({
     where : {
         id : 2
-    },
-    data : {
-        username : "Aryan",
-        password : "123123",
-        age : 21,
-        city : "Delhi"
     }
-})}
+})
+console.log(user?.password)
+}
 
-updateUser();
+readUser();
