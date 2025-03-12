@@ -8,19 +8,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Relationships in prisma
+// every user can have multiple todos 
+//one to many relationship
 model User {
   id Int @default(autoincrement()) @id
   username String @unique
   password String
   age Int
   city String
+  todos Todo[]
 }
-// next step is to migrate the database , i have to generate the sql and then run the sql on the database
-// npx prisma migrate dev
+
 model Todo {
   id Int @default(autoincrement()) @id
   title String
   description String
   done Boolean
   userId Int
+  user User @relation(fields: [userId] , references: [id])
 }
