@@ -7,10 +7,10 @@ async function readUser() {
         id : 2
     },
     select:{
-      username : true
+      todos : true // i can include todos here
     }
 })
-console.log(user?.username)
+console.log(user)
 }
 
 readUser();
